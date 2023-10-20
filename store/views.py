@@ -49,7 +49,7 @@ def checkout(request):
     return render(request, 'checkout.html', context)
 
 def updateItem(request):
-	data = json.loads(request.body)
+	data = json.loads(request.body) 
 	productId = data['productId']
 	action = data['action']
 	print('Action:', action)
@@ -88,7 +88,7 @@ def processOrder(request):
 	total = float(data['form']['total'])
 	order.transaction_id = transaction_id 
 
-	if total == order.get_cart_total:
+	if total == float(order.get_cart_total):
 		order.complete = True
 	order.save()
 
